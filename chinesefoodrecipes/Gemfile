@@ -1,0 +1,8 @@
+source "http://rubygems.org"
+
+gem 'pry'
+gem 'nokogiri'
+gem 'awesome_print'
+gem 'colorize'
+
+
