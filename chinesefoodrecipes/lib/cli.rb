@@ -1,16 +1,6 @@
-require_relative './scraper.rb'
-require_relative './difficulty.rb'
-require_relative './time.rb'
-require_relative './menu_options/random_recipes.rb'
-require_relative './menu_options/choose_from_all.rb'
-require_relative './menu_options/list_all_dishes.rb'
-require_relative './menu_options/menu.rb'
-require_relative './menu_options/choose_by_difficulty.rb'
-require_relative './menu_options/choose_by_cooking_time.rb'
 require 'colorize'
 require'pry'
 class Clicentral
-  
   def start
     Scraper.new.fetch
     Recipe.all.each do |recipe|
@@ -18,31 +8,30 @@ class Clicentral
       recipe.add_recipe_attributes(attribute_hash)
     end
 
-    puts "Welcome to top 49 Chinese food recipes!"
+    puts "Welcome to top 49 Chinese food recipes!".bold.magenta
+    puts "---------------------------------------".green
+    puts "---------------------------------------".green
     input =""
     while input!="exit"
-      puts "Please choose an option from the following menu."
+      puts "Please choose an option(1~6) from the following menu.".bold.magenta
       menu
       input =gets.strip    
       
       case input.to_i
         when 1
-          choose_from_all
-        when 2
           random_recipe
+        when 2
+          choose_from_all
         when 3 
-          choose_by_difficulty
+          choose_from_veggie_options
         when 4
-          choose_by_time
+          choose_by_cooking_time
         when 5
+          choose_by_difficulty
         when 6
-        when 7
-
-        when 8
           input ="exit"
       end 
-   
     end
-    puts "Thanks for using,goodbye!"
+    puts "Thanks for using,happy cooking!".bold.magenta
   end    
 end
